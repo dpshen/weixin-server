@@ -1,7 +1,8 @@
 const router = require('koa-router')();
 
-const {checkServer} = require('./api/checkServer');
-router.get('/',checkServer);
+const {checkServer, getJsApiTicket} = require('./checkServer');
+router.get('/', checkServer);
+router.get('/ticket', getJsApiTicket);
 
 // const {addApi, updateApi, getApiList, getApi} = require('./api/apiCtrl');
 // const {addGroup, updateGroup, getGroupList, getGroup} = require('./api/groupCtrl');

@@ -11,7 +11,7 @@ const bodyparser = require('koa-bodyparser')({
 });
 
 const app = new Koa();
-const router = require('./router');
+const router = require('./api/router');
 const logger = require('./libs/logger');
 const WebResult = require('./libs/WebResult');
 
@@ -44,14 +44,6 @@ app.use(async(ctx, next)=> {
 router.allowedMethods();
 app.use(router.routes());
 
-// // 静态服务
-// app.use(require('koa-static')("./view/build", {
-//     index: "index.html"
-// }));
-// 自定义:除css,js文件请求外都转向index.html
-// app.use(staticServer("./build",{
-//     index: "index.html"
-// }));
 
 app.on('error', function (err, ctx) {
     logger.error(`${ctx.method} ${ctx.url}`, err);
