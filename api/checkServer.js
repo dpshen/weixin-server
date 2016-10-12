@@ -27,12 +27,13 @@ export async function getJsApiTicket(ctx, next) {
         nonceStr: uuid.v1(),
         timestamp: new Date().getTime()
     }
-    var unStr = `jsapi_ticket=${ret.ticke}&noncestr=${ret.nonceStr}&timestamp=${ret.timestamp}&url=${url}`;
+    var unStr = `jsapi_ticket=${ret.ticket}&noncestr=${ret.nonceStr}&timestamp=${ret.timestamp}&url=${url}`;
+    ctx.logger.info(unStr);
 
     ret.signature = sha1(unStr);
 
     if (wx.js_ticket) {
-        ctx.logger.info(ret, unStr);
+        ctx.logger.info(ret);
         ctx.result.setResult(ret)
     } else {
         requestAccessToken()
