@@ -32,7 +32,7 @@ export async function getJsApiTicket(ctx, next) {
     ret.signature = sha1(unStr);
 
     if (wx.js_ticket) {
-        ctx.logger.info(ret);
+        ctx.logger.info(ret, unStr);
         ctx.result.setResult(ret)
     } else {
         requestAccessToken()
