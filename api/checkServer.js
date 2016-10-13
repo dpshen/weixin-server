@@ -23,6 +23,7 @@ export async function getJsApiTicket(ctx, next) {
     var ret = {
         url:url,
         appid:wx.appid,
+        access_token:wx.access_token,
         ticket: wx.js_ticket,
         nonceStr: uuid.v1(),
         timestamp: new Date().getTime()

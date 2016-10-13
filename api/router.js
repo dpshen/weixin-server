@@ -1,8 +1,11 @@
 const router = require('koa-router')();
 
 const {checkServer, getJsApiTicket} = require('./checkServer');
+const {loadFile} = require('./loadMedia');
+
 router.get('/', checkServer);
 router.get('/ticket', getJsApiTicket);
+router.post('/loadmedia', loadFile);
 
 // const {addApi, updateApi, getApiList, getApi} = require('./api/apiCtrl');
 // const {addGroup, updateGroup, getGroupList, getGroup} = require('./api/groupCtrl');
